@@ -1,0 +1,7 @@
+spring:
+  rabbitmq:
+    host: localhost #192.168.2.17
+    port: 5672    # rabbitmq的控制台的端口是15672；mq的端口是5672
+    username: guest
+    password: guest
+
