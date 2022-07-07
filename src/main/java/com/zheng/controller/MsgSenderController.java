@@ -56,7 +56,7 @@ public class MsgSenderController {
     /**
      * @author: ZhengTianLiang
      * @date: 2021/5/11  10:10
-     * @desc: 发送消息（发布订阅模式的交换机）
+     * @desc: 发送消息（点对点模式的交换机）
      */
     @GetMapping(value = "/msg/direct.do")
     public String directSender(String routingKey,String msg){
@@ -75,7 +75,18 @@ public class MsgSenderController {
         return "SUCCESS";
     }
 
-
-
+    /**
+     * @author: ZhengTianLiang
+     * @date: 2022/7/7  23:22
+     * @desc: 发送消息（发送方异常怎么处理）
+     */
+    @GetMapping(value = "/send/error.do")
+    public String sendErrorDo(String msg){
+        directSender.sendDirectMsg("info",msg);
+        if (1==1){
+            throw new RuntimeException("消息发送方发生了异常");
+        }
+        return "SUCCESS";
+    }
 
 }

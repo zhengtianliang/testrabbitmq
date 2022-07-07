@@ -1,7 +1,22 @@
+
+
 spring:
   rabbitmq:
-    host: localhost #192.168.2.17
-    port: 5672    # rabbitmq�Ŀ���̨�Ķ˿���15672��mq�Ķ˿���5672
-    username: guest
-    password: guest
-
+#    host: localhost #192.168.2.17
+    host: 192.168.5.128 #192.168.2.17
+    port: 5672    # rabbitmq�Ŀ���̨�Ķ˿���15672��mq�Ķ˿���5672
+#    username: guest
+    username: admin
+#    password: guest
+    password: 111111
+    listener:
+      direct:
+        retry:
+          ## 事实证明，这个注解没有卵用，消费者还是不断的重试。
+          enabled: true
+          # 最多重试3次
+          max-attempts: 3
+          # 重试时每次间隔1s
+          initial-interval: 1000
+server:
+  port: 9001

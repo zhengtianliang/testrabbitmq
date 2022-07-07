@@ -21,6 +21,10 @@ public class MyDirectConsumer {
     @RabbitHandler
     @RabbitListener(queues = "my.direct.loginfo")
     public void getInfoMsg(String msg){
+        if (1==1){
+            System.out.println("消费方报错了");
+            throw new RuntimeException("123");
+        }
         System.err.println("进入了info类型的消息"+msg);
     }
 
