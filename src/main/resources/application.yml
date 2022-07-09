@@ -9,14 +9,20 @@ spring:
     username: admin
 #    password: guest
     password: 111111
+#    listener:yal-interval: 1000
     listener:
-      direct:
+      simple:
         retry:
-          ## 事实证明，这个注解没有卵用，消费者还是不断的重试。
+          #开启重试
           enabled: true
-          # 最多重试3次
-          max-attempts: 3
-          # 重试时每次间隔1s
-          initial-interval: 1000
+          # 最多重试4次
+          max-attempts: 4
+          # 重试时每次间隔 5s
+          initial-interval: 5000
+    # 消息成功确认
+#    publisher-confirms: true
+    # 消息失败确认
+#    publisher-returns: true
+
 server:
   port: 9001
